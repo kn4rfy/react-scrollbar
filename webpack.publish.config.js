@@ -1,21 +1,10 @@
-const path = require('path');
+const path = require('path')
 
 module.exports =
 {
-
   entry: './src',
-
-  output: {
-    path: './dist',
-    filename: 'react-scrollbar.js',
-    library: 'react-scrollbar',
-    libraryTarget: 'umd',
-  },
-
-  externals: {
-    react: 'react',
-  },
-
+  mode: 'production',
+  devtool: 'source-map',
   module: {
     rules: [
       {
@@ -32,6 +21,22 @@ module.exports =
       },
     ],
   },
+  output: {
+    path: path.resolve(__dirname, 'dist/'),
+    filename: 'react-scrollbar.js',
+    library: 'react-scrollbar',
+    libraryTarget: 'umd',
+  },
+
+  externals: {
+    react: 'react',
+    'prop-types': {
+      'commonjs': 'prop-types',
+      'commonjs2': 'prop-types',
+      'amd': 'prop-types',
+      'root': 'PropTypes'
+    }
+  },
 
   resolve: {
     extensions: ['.js', '.jsx', '.scss', '.css'],
@@ -39,16 +44,4 @@ module.exports =
       'react-scrollbar-js': path.resolve(__dirname, 'src/'),
     },
   },
-
-  devtool: 'source-map',
-
-
-  devServer: {
-    contentBase: path.resolve(__dirname, 'example/public'),
-    publicPath: '/build/',
-    clientLogLevel: 'none',
-//    inline: true,
-//    hot: true
-  },
-
-};
+}

@@ -1,38 +1,56 @@
 {
-  "extends": "airbnb",
-  "parser": "babel-eslint",
-  "rules": {
-    "arrow-body-style": 0,
-    "prefer-arrow-callback": 0,
-    "func-names": 0,
-    "eqeqeq": 1,
-	"no-unused-vars": 1,
-    "react/jsx-no-bind": 1,
-    "react/jsx-uses-react": 1,
-    "react/prefer-stateless-function": 0,
-    
-    // indentation
-    "indent": [ 2, 2 ],
-    "max-len": [1, 100],
-	
-    // comment
-	'spaced-comment': ['warn', 'always', {
-      exceptions: ['-', '+','todo'],
-      markers: ['=', '!']           // space here to support sprockets directives
-    }],
-    "no-use-before-define": [ 2, { "functions": false } ],
-    
-    "jsx-a11y/no-static-element-interactions": 0,
-    import/no-unresolved: [2, { ignore: ['\.'] }],
-    import/extensions: [2, { "": "never" }],
-  },
-  "parserOptions": {
-    "ecmaVersion": 6,
-    "ecmaFeatures": {
-      "experimentalObjectRestSpread": true
-    }
-  },
-  "env": {
-        "browser": true,
+    "parser": "babel-eslint",
+    "env": {
+        "es6": true,
+        "node": true
+    },
+    "extends": [
+        "airbnb",
+        "eslint:recommended",
+        "prettier",
+        "prettier/react"
+    ],
+    "plugins": [
+        "import",
+        "jsx-a11y",
+        "prettier",
+        "react"
+    ],
+    "globals": {
+        "__DEV__": true,
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly"
+    },
+    "rules": {
+        "global-require": "off",
+        "no-console": "off",
+        "no-mixed-operators": "warn",
+        "no-unused-vars": "warn",
+        "no-use-before-define": "warn",
+        "prefer-destructuring": "warn",
+        "semi": [
+            "error",
+            "never"
+        ],
+        "import/first": "warn",
+        "react/destructuring-assignment": "off",
+        "react/jsx-curly-brace-presence": [
+            "warn",
+            {
+                "props": "always",
+                "children": "never"
+            }
+        ],
+        "react/jsx-filename-extension": "off",
+        "react/prop-types": "off",
+        "react-native/no-inline-styles": "off"
+    },
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true,
+            "legacyDecorators": true
+        },
+        "ecmaVersion": 2018,
+        "sourceType": "module"
     }
 }
